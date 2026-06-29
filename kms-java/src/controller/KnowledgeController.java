@@ -6,12 +6,6 @@ import model.StatistikPutusan;
 import util.DataTidakValidException;
 import java.util.ArrayList;
 
-/**
- * KnowledgeController adalah penghubung antara View dan Model.
- * Layer: CONTROLLER — terima permintaan dari View, lakukan validasi/logika,
- * lalu teruskan ke Model. View TIDAK BOLEH mengakses Repository secara langsung,
- * semua harus lewat class ini.
- */
 public class KnowledgeController {
 
     private KnowledgeRepository repository;
