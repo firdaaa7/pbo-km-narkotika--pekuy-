@@ -3,7 +3,6 @@ package controller;
 import model.Putusan;
 import model.KnowledgeRepository;
 import model.StatistikPutusan;
-import util.DataTidakValidException;
 import java.util.ArrayList;
 
 public class KnowledgeController {
@@ -14,12 +13,12 @@ public class KnowledgeController {
         this.repository = new KnowledgeRepository();
     }
 
-    public boolean tambahData(Putusan p) throws DataTidakValidException {
+    public boolean tambahData(Putusan p) {
         if (p == null || p.getNomorPerkara().isEmpty()) {
-            throw new DataTidakValidException("Nomor perkara tidak boleh kosong.");
+            return false;
         }
         if (repository.cariByNomor(p.getNomorPerkara()) != null) {
-            throw new DataTidakValidException("Nomor perkara '" + p.getNomorPerkara() + "' sudah ada (duplikat).");
+            return false;
         }
         repository.simpan(p);
         return true;
@@ -53,7 +52,5 @@ public class KnowledgeController {
         return new StatistikPutusan(repository.getDaftarSemua());
     }
 
-    public void muatDataAwal() {
-        repository.muatDataSampel();
-    }
+
 }
