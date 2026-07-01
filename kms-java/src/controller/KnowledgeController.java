@@ -58,8 +58,4 @@ public class KnowledgeController {
     public StatistikPutusan getStatistik() {
         return new StatistikPutusan(repository.getDaftarSemua());
     }
-
-    public void muatDataAwal() {
-        repository.muatDataSampel();
-    }
 }
